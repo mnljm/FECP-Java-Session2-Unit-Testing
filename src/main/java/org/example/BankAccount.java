@@ -11,6 +11,12 @@ public class BankAccount {
         this.balance = balance;
     }
 
+    public BankAccount(int accNumber, String name){
+        this.accNumber = accNumber;
+        this.accHolder = name;
+        this.balance = 0;
+    }
+
     public double deposit (double depositAmt) {
         if (depositAmt <= 0) {
             System.out.println("Please enter valid amount");
@@ -44,4 +50,10 @@ public class BankAccount {
     public int getAccNumber(){
         return this.accNumber;
     }
+
+    public double getBalance(){
+        return this.balance;
+    }
+
+
 }
