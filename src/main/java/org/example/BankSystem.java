@@ -4,6 +4,15 @@ import java.util.*;
 
 public class BankSystem {
 
+
+    public static BankAccount searchAccount(ArrayList<BankAccount> accounts, int accNum){
+        for (BankAccount account : accounts){
+            if (account.getAccNumber() == accNum)
+                return account;
+        }
+        return null;
+    }
+
     public static void checkBalance(ArrayList<BankAccount> bankAccounts, int newAccNum){
         boolean exists = false;
         for (BankAccount account : bankAccounts){
