@@ -19,6 +19,23 @@ public class BankSystem {
         }
     }
 
+
+    public static void withdraw (ArrayList<BankAccount> bankAccounts, int accNum, double withdrawAmt){
+        boolean exists = false;
+        for (BankAccount account : bankAccounts){
+            if (account.getAccNumber() == accNum) {
+                account.withdraw(withdrawAmt);
+                exists = true;
+                break;
+            }
+
+        }
+
+        if(!exists){
+            System.out.println("Account does not exist");
+        }
+    }
+
     public static void deposit (ArrayList<BankAccount> bankAccounts, int accNum, double depositAmt){
         boolean exists = false;
         for (BankAccount account : bankAccounts){
@@ -97,12 +114,14 @@ public class BankSystem {
                         default:
                             System.out.println("Invalid input, please try again");
                     }
+                    System.out.println();
                     break;
 
                 case 2:
                     System.out.println("---");
                     viewAllAccounts(bankAccounts);
                     System.out.println("---");
+                    System.out.println();
                     break;
                 case 3:
                     System.out.print("Enter account number to check balance: ");
@@ -113,16 +132,24 @@ public class BankSystem {
                     break;
 
                 case 4:
-                    System.out.println("Enter account number to deposit to: ");
+                    System.out.print("Enter account number to deposit to: ");
                     inAccNum = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Enter amount to deposit: ");
+                    System.out.print("Enter amount to deposit: ");
                     double depositAmt = sc.nextDouble();
                     deposit(bankAccounts, inAccNum, depositAmt);
+                    System.out.println();
                     break;
 
-
-
+                case 5:
+                    System.out.print("Enter account number to withdraw from: ");
+                    inAccNum = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter amount to withdraw: ");
+                    double inDeposit = sc.nextDouble();
+                    withdraw(bankAccounts, inAccNum, inDeposit);
+                    System.out.println();
+                    break;
 
                 case 6:
                     System.out.println("Thank you for banking with us!");
